@@ -4,6 +4,8 @@ Users will have access to a basic profile page where they will be able to add th
 
 # angular-seed — the seed for AngularJS apps
 
+ARIA CA3 Project
+
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
 You can use it to quickly bootstrap your angular webapp projects and dev environment for these
 projects.
