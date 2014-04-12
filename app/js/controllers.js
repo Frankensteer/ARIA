@@ -18,4 +18,8 @@ angular.module('bottleRocket.controllers', [])
 
 	.controller('ArtistCtrl', ['$scope', function($scope) {
   		$scope.title = "ARTIST";
-  	}]);
+  	}])
+
+  .controller('EventsCtrl', ['$scope', function($scope) {
+      $scope.title = "EVENTS";
+    }]);

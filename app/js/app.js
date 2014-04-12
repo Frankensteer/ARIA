@@ -29,6 +29,11 @@ angular.module('bottleRocket', [
       .when('/artist', {
       		templateUrl: 'app/views/artist.html',
       		controller: 'ArtistCtrl'
-      	});
+      	})
+
+      .when('/events', {
+          templateUrl: 'app/views/events.html',
+          controller: 'EventsCtrl'
+      });
 
 }]);
