@@ -2,10 +2,20 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', [function() {
+angular.module('bottleRocket.controllers', [])
 
-  }])
-  .controller('MyCtrl2', [function() {
+	.controller('MainCtrl', ['$scope', function($scope) {
+  		
+  	}])
 
-  }]);
+	.controller('HomeCtrl', ['$scope', function($scope) {
+  		$scope.title = "HOME";
+  	}])
+
+	.controller('ProfileCtrl', ['$scope', function($scope) {
+  		$scope.title = "PROFILE";
+	}])
+
+	.controller('ArtistCtrl', ['$scope', function($scope) {
+  		$scope.title = "ARTIST";
+  	}]);
