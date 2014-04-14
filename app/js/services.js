@@ -26,7 +26,7 @@ angular.module('bottleRocket.services', []).
 	.factory('seevlService', function($http) {
 		// sample URL: http://data.seevl.fm/entities/?prefLabel=nirvana
 		
-		return $http.jsonp("http://data.seevl.fm/entities/?prefLabel=nirvana");
+		return $http.jsonp("http://data.seevl.fm/entities/?prefLabel=nirvana&callback=JSON_CALLBACK ");
 	})
 
 

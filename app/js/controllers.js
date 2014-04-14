@@ -14,7 +14,7 @@ angular.module('bottleRocket.controllers', [])
       seevlService.then(function(data){
       console.log("seevl"+ data);
 	  });
-      });
+      
       
   }])
 
