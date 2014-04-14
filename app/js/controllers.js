@@ -4,8 +4,30 @@
 
 angular.module('bottleRocket.controllers', [])
 
-	.controller('MainCtrl', ['$scope', function($scope) {
-  		
+	.controller('MainCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
+        $scope.searchSC = function() {
+            SC.get('/tracks', { q: $scope.query, limit: 10 }, function(tracks) {
+                $scope.tracks = tracks;
+                $scope.$apply();
+            });
+
+            $scope.playTrack = function(track) {
+                track_url = track.permalink_url;
+                SC.oEmbed(track_url, { auto_play: true }, function(oEmbed) {
+                    $scope.oEmbed = oEmbed;
+                    $scope.oEmbed.htmlSafe = $sce.trustAsHtml(oEmbed.html);
+                    $scope.$apply();
+                });
+            }
+        }
+
+        var track_url;
+        SC.oEmbed(track_url, { auto_play: false }, function(oEmbed) {
+            $scope.oEmbed = oEmbed;
+            // http://stackoverflow.com/questions/19415394/with-ng-bind-html-unsafe-removed-how-do-i-inject-html
+            $scope.oEmbed.htmlSafe = $sce.trustAsHtml(oEmbed.html);
+            $scope.$apply();
+        });
   	}])
 
   // basic code for accessing data from AJAX service
@@ -24,8 +46,4 @@ angular.module('bottleRocket.controllers', [])
 
 	.controller('ArtistCtrl', ['$scope', function($scope) {
   		$scope.title = "ARTIST";
-  }])
-
-  .controller('EventsCtrl', ['$scope', function($scope) {
-      $scope.title = "EVENTS";
   }]);

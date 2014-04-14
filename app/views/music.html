@@ -1,0 +1,10 @@
+<div>
+    <h1>Music</h1>
+    <p ng-bind-html="oEmbed.htmlSafe"></p>
+    <p>Searching for: {{query}}</p>
+    <input ng-model="query" />
+    <button type="submit" ng-click="searchSC()">Search</button>
+    <ul>
+        <li ng-repeat="track in tracks" class="repeat-animation"><a ng-click="playTrack(this.track)">{{track.title}}</a></li>
+        </ul>
+    </div>

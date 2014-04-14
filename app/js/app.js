@@ -31,6 +31,11 @@ angular.module('bottleRocket', [
       		controller: 'ArtistCtrl'
       	})
 
+        .when('/music', {
+            templateUrl: 'app/views/music.html',
+            controller: 'MainCtrl'
+        })
+
       .when('/events', {
           templateUrl: 'app/views/events.html',
           controller: 'EventsCtrl'

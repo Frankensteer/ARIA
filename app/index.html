@@ -11,6 +11,7 @@
     <li><a href="/profile">Profile</a></li>
     <li><a href="/artist">Artist</a></li>
     <li><a href="/events">Events</a></li>
+    <li><a href="/music">Music</a></li>
   </ul>
   <div ng-view></div>
 
@@ -26,5 +27,13 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  <script>
+      SC.initialize({
+          client_id: '6d6beaec51371e43d5684a81f4c7e861'
+      });
+  </script>
+  <!-- Soundcloud Widget Script -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
 </body>
 </html>
