@@ -19,10 +19,14 @@ angular.module('bottleRocket.services', []).
 	.factory('echonestService', function() {
 		// this needs an API key which I do not want to check into Source Control,
 		// I'll come up with a workaround if we need to use it
+		
+		
 	})
 
 	.factory('seevlService', function($http) {
 		// sample URL: http://data.seevl.fm/entities/?prefLabel=nirvana
+		
+		return $http.jsonp("http://data.seevl.fm/entities/?prefLabel=nirvana");
 	})
 
 

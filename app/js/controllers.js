@@ -9,12 +9,12 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('HomeCtrl', ['$scope', 'seevlService', function($scope, seevlService) {
+	.controller('HomeCtrl', ['$scope', 'seevlService', function($scope, seevlService )  {
   		$scope.title = "HOME";
-      seevlService.then(function(data) {
-        $scope.data = data;
-        console.log($scope.data);
-      })
+      seevlService.then(function(data){
+      console.log("seevl"+ data);
+	  });
+      });
       
   }])
 
