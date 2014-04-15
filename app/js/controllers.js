@@ -44,6 +44,14 @@ angular.module('bottleRocket.controllers', [])
   		$scope.title = "PROFILE";
 	}])
 
+
+    .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {
+      $scope.title = "EVENT";
+      bandsintownService.then(function(data){
+        console.log(data);
+      });
+  }])
+
 	.controller('ArtistCtrl', ['$scope', function($scope) {
   		$scope.title = "ARTIST";
   }]);

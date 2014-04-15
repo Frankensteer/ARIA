@@ -45,11 +45,11 @@ angular.module('bottleRocket.services', []).
 	})
 
 	.factory('bandsintownService', function($http) {
-	//	The Bandsintown V2 API currently does not require authentication but does require that an application ID (app_id) parameter be passed with every request to identify yourself. See the example below:
+//	The Bandsintown V2 API currently does not require authentication but does require that an application ID (app_id) parameter be passed with every request to identify yourself. See the example below:
 	//	http://api.bandsintown.com/artists/Skrillex/events.json?api_version=2.0&app_id=YOUR_APP_ID
 	//	The application ID can be anything, but should be a word that describes your application or company.
 
 	//	Sample URL for this request: http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=YOUR_APP_ID
-
+		return	$http.jsonp("http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK");
 
 	});
