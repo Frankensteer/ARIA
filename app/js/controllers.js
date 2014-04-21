@@ -5,6 +5,8 @@
 angular.module('bottleRocket.controllers', [])
 
 	.controller('MainCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
+
+        // We should probably move this Soundcloud stuff out into a service and directive but it's not hugh priority
         $scope.searchSC = function() {
             SC.get('/tracks', { q: $scope.query, limit: 10 }, function(tracks) {
                 $scope.tracks = tracks;
@@ -40,8 +42,8 @@ angular.module('bottleRocket.controllers', [])
       
   }])
 
-	.controller('ProfileCtrl', ['$scope', function($scope) {
-  		$scope.title = "PROFILE";
+	.controller('ProfileCtrl', [ function() {
+  		
 	}])
 
 
@@ -52,6 +54,6 @@ angular.module('bottleRocket.controllers', [])
       });
   }])
 
-	.controller('ArtistCtrl', ['$scope', function($scope) {
-  		$scope.title = "ARTIST";
+	.controller('ArtistCtrl', [ function() {
+  	
   }]);
