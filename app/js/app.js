@@ -1,18 +1,27 @@
 'use strict';
 
+var app = angular.module('app', ['facebook']); // inject facebook module
 
+app.config(['FacebookProvider', function(FacebookProvider) {
+     // Here you could set your appId through the setAppId method and then initialize
+     // or use the shortcut in the initialize method directly.
+     FacebookProvider.init('636537143098707');
+}])
 // Declare app level module which depends on filters, and services
 angular.module('bottleRocket', [
   'ngRoute',
   'bottleRocket.filters',
   'bottleRocket.services',
   'bottleRocket.directives',
-  'bottleRocket.controllers'
+  'bottleRocket.controllers',
+  'facebook'
 ])
 
-.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+.config(['$routeProvider', '$locationProvider', 'FacebookProvider', function($routeProvider, $locationProvider, FacebookProvider) {
 
-	$locationProvider.html5Mode(true);
+	FacebookProvider.init('my-ap-id');
+  
+  $locationProvider.html5Mode(true);
 
 	$routeProvider
       
