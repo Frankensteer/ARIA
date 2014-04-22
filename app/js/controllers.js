@@ -52,6 +52,21 @@ angular.module('bottleRocket.controllers', [])
       bandsintownService.then(function(data){
         console.log(data);
       });
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          $scope.lat = position.coords.latitude;
+          $scope.long = position.coords.longitude;
+          console.log("GEOLOCATION: " + $scope.lat + ", " + $scope.long);
+      }, function() {
+        alert("You need to give me permission to use your position to get Weather Info.");
+      });
+    } else {
+      // Default Lat & Long for Dublin
+        console.log("DEFAULT GEOLOCATION")
+        $scope.lat = 53.3478;
+        $scope.long = 6.2597;
+    }
+  
   }])
 
 	.controller('ArtistCtrl', [ function() {
