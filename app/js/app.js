@@ -19,7 +19,7 @@ angular.module('bottleRocket', [
 
 .config(['$routeProvider', '$locationProvider', 'FacebookProvider', function($routeProvider, $locationProvider, FacebookProvider) {
 
-	FacebookProvider.init('my-ap-id');
+	FacebookProvider.init('636537143098707');
   
   $locationProvider.html5Mode(true);
 
