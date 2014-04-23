@@ -51,10 +51,10 @@ angular.module('bottleRocket.controllers', [])
       $scope.title = "EVENT";
       $scope.searchBands =  function() {
           return bandsintownService.players($scope.band).then(function(data){
-
+               $scope.bandsPlaying = data;
               console.log(data);
           });
-      }
+      };
 
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
