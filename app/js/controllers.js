@@ -49,9 +49,13 @@ angular.module('bottleRocket.controllers', [])
 
     .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {
       $scope.title = "EVENT";
-      bandsintownService.then(function(data){
-        console.log(data);
-      });
+      $scope.searchBands =  function() {
+          return bandsintownService.players($scope.band).then(function(data){
+
+              console.log(data);
+          });
+      }
+
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
           $scope.lat = position.coords.latitude;

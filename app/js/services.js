@@ -50,6 +50,14 @@ angular.module('bottleRocket.services', []).
 	//	The application ID can be anything, but should be a word that describes your application or company.
 
 	//	Sample URL for this request: http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=YOUR_APP_ID
+
+
+        return {
+            players: function(band) {
+              return $http.jsonp("http://api.bandsintown.com/artists/" + band + ".json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK");
+       }
+     }
+
 		return	$http.jsonp("http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK");
 
 	});
