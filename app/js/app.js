@@ -14,7 +14,9 @@ angular.module('bottleRocket', [
   'bottleRocket.services',
   'bottleRocket.directives',
   'bottleRocket.controllers',
-  'facebook'
+  'facebook',
+  'mm.foundation'
+
 ])
 
 .config(['$routeProvider', '$locationProvider', 'FacebookProvider', function($routeProvider, $locationProvider, FacebookProvider) {
