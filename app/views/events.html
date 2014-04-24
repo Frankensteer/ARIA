@@ -3,15 +3,51 @@
 <p>This is the Events page. It will show upcoming events near the user's current location, using HTML5 Geolocation and the BandsInTown API.</p>
 
 
-<p>Search For Event:</p>
-<input type = "text" ng-model="band" />
-<br /><br />
-<button ng-click = "searchBands($scope.band)">Search</button>
 
-        <ul>
+      <!-- Search Bar -->
+ 
+        <div class="row">
+ 
+          <div class="large-12 columns">
+            <div class="radius panel">
+ 
+            <form>
+              <div class="row collapse">
+
+              	 <p>Search For Event:</p>
+ 
+                <div class="large-10 small-8 columns">
+               
+					<input type="text" ng-model="band" />
+                </div>
+ 
+                <div class="large-2 small-3 columns">
+            <button ng-click = "searchBands($scope.band)" class="postfix button expand">Search</button>
+                </div>
+ 
+              </div>
+            </form>
+ 
+          </div>
+ 
+          <div class="large-12 columns">
+          	<div class="radius panel">
+
+          <ul>
             <li ng-repeat="band in bandsPlaying">
                 {{ band.name }}
             </li>
         </ul>
 
+    </div>
+</div>
 
+
+          </div>
+
+
+
+ 
+        </div>
+ 
+      <!-- End Search Bar -->
