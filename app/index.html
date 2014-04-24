@@ -7,20 +7,31 @@
     <link rel="stylesheet" href="css/foundation.css"/>
 </head>
 <body>
+
     <div class="row">
     <div class="large-12 columns">
 
-  <ul class="menu">
-    <li><a href="/app">Home</a></li>
-    <li><a href="/profile">Profile</a></li>
-    <li><a href="/artist">Artist</a></li>
-    <li><a href="/events">Events</a></li>
-    <li><a href="/music">Music</a></li>
-  </ul>
+     <div class="row">
+    <div class="large-3 columns">
+        <div class="logo">
+    <span class="inspire">bottle</span><span class="dev">rocket</span>
+  </div>
+    </div>
+    <div class="large-9 columns">
+      <ul class="right button-group">
+    <li><a href="/app" class="button">Home</a></li>
+    <li><a href="/profile" class="button">Profile</a></li>
+    <li><a href="/artist" class="button">Artist</a></li>
+    <li><a href="/events" class="button">Events</a></li>
+    <li><a href="/music" class="button">Music</a></li>
+      </ul>
+     </div>
+   </div>
+
+  
   <div ng-view></div>
 
   <!-- TEST CODE GOES HERE -->
-
 
 <!-- END OF TEST CODE -->
 
