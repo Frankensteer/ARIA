@@ -2,5 +2,39 @@
 
 <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div> -->
 
-<h1>Searching for: {{query}}</h1>
-<input ng-model="query" /><button type="submit" ng-click=search()>Search</button>
+
+
+
+
+      <!-- Search Bar -->
+ 
+        <div class="row">
+ 
+          <div class="large-12 columns">
+            <div class="radius panel">
+
+            	<h4>Searching for: {{query}}</h4>
+ 
+            <form>
+              <div class="row collapse">
+ 
+                <div class="large-10 small-8 columns">
+                  <input type="text" ng-model="query" />
+                </div>
+ 
+                <div class="large-2 small-3 columns">
+                <button class="postfix button expand" type="submit" ng-click=search()>Search
+              </button>
+                </div>
+ 
+              </div>
+            </form>
+ 
+          </div>
+          </div>
+ 
+        </div>
+ 
+      <!-- End Search Bar -->
+
+
