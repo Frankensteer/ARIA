@@ -24,6 +24,7 @@ angular.module('bottleRocket', [
   
   $locationProvider.html5Mode(true);
 
+
 	$routeProvider
       
     	.when('/app', {
@@ -49,6 +50,16 @@ angular.module('bottleRocket', [
       .when('/events', {
           templateUrl: 'app/views/events.html',
           controller: 'EventsCtrl'
-      });
+      })
+
+       .when('/about', {
+          templateUrl: 'app/views/about.html',
+          controller: 'AboutCtrl'
+      })
+
+      .when('/contact', {
+            templateUrl: 'app/views/contact.html',
+            controller: 'ContactCtrl'
+        });
 
 }]);

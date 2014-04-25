@@ -42,9 +42,23 @@ angular.module('bottleRocket.controllers', [])
       
   }])
 
+  // Profile
+
 	.controller('ProfileCtrl', [ function() {
   		
 	}])
+
+  // About 
+
+  .controller('AboutCtrl', [ function() {
+      
+  }])
+
+  // Contact
+
+  .controller('ContactCtrl', [ function() {
+      
+  }])
 
 
     .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {

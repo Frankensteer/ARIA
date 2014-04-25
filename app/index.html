@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="css/app.css"/>
-    <link rel="stylesheet" href="css/foundation.css"/>
+  <link rel="stylesheet" href="/lib/zurb/css/foundation.css"/>
 </head>
 <body>
 
@@ -31,9 +31,6 @@
   
   <div ng-view></div>
 
-  <!-- TEST CODE GOES HERE -->
-
-<!-- END OF TEST CODE -->
 
       </div>
     </div>
@@ -43,7 +40,10 @@
   <div class="row">
     <div class="large-12 columns">
     <div id="slider">
-      <img src="img/Band_image.jpg" />
+
+<img src="img/Band_image.jpg" />
+        <div class="orbit-caption">
+    </div>
     </div>
     
     <hr />
@@ -54,21 +54,34 @@
  
   <div class="row">
     <div class="large-4 columns">
-      <img src="http://placehold.it/400x300&text=[img]" />
-      <h4>This is a content section.</h4>
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+      <img src="img/kanye_west.jpg" />
+      <h4>Kanye West</h4>
+      <p>WED JUL 2, 2014 - 5:30 PM
+       Marlay Park
+        Dublin, Ireland</p>
+        <a href="/music" class="button">Search Artist</a>
     </div>
     
     <div class="large-4 columns">
-      <img src="http://placehold.it/400x300&text=[img]" />
-      <h4>This is a content section.</h4>
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+      <img src="img/slayer.jpg" />
+      <h4>Slayer.</h4>
+     <p>The Academy
+       TUE JUL 1, 2014 - 7:00 PM
+      
+         57 Abbey Street Middle
+           Dublin, Ireland</p>
+           <a href="/music" class="button">Search Artist</a>
     </div>
     
     <div class="large-4 columns">
-      <img src="http://placehold.it/400x300&text=[img]" />
-      <h4>This is a content section.</h4>
-      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+      <img src="img/fray_helios.jpg" />
+      <h4>The Fray</h4>
+      <p>The Fray
+
+Olympia Theatre
+73 Dame Street
+Dublin, Ireland</p>
+<a href="/music" class="button">Search Artist</a>
     </div>
   
     </div>
@@ -78,14 +91,13 @@
     <div class="large-12 columns">
     
       <div class="panel">
-        <h4>Get in touch!</h4>
             
         <div class="row">
           <div class="large-9 columns">
-            <p>We'd love to hear from you, you attractive person you.</p>
+         <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div>
           </div>
           <div class="large-3 columns">
-            <a href="#" class="radius button right">Contact Us</a>
+            <a href="/contact" class="radius button right">Contact Us</a>
           </div>
         </div>
       </div>
@@ -100,14 +112,16 @@
       <hr />
       <div class="row">
         <div class="large-6 columns">
-          <p>© Copyright no one at all. Go to town.</p>
+          <p>© Copyright. Bottle Rocket</p>
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="/artist">Artist</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/music">Music</a></li>
           </ul>
         </div>
       </div>
@@ -127,7 +141,9 @@
   <script src="js/directives.js"></script>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script src="mm-foundation-tpls-0.1.0.js"></script>
-   <script src="example.js"></script>
+  <script src="../lib/zurb/js/foundation.js"></script>
+  <script src="../lib/zurb/js/foundation.orbit.js"></script>
+  <script src="../lib/zurb/js/foundation.slider.js"></script>
   <script>
       SC.initialize({
           client_id: '6d6beaec51371e43d5684a81f4c7e861'
@@ -135,5 +151,8 @@
   </script>
   <!-- Soundcloud Widget Script -->
   <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script>
+  $(document).foundation();
+</script>
 </body>
 </html>
