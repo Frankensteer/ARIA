@@ -51,6 +51,11 @@ angular.module('bottleRocket', [
           controller: 'EventsCtrl'
       })
 
+       .when('/about', {
+          templateUrl: 'app/views/events.html',
+          controller: 'AboutCtrl'
+      })
+
       .when('/contact', {
             templateUrl: 'app/views/contact.html',
             controller: 'ContactCtrl'

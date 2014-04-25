@@ -46,6 +46,15 @@ angular.module('bottleRocket.controllers', [])
   		
 	}])
 
+  .controller('AboutCtrl', [ function() {
+      
+  }])
+
+
+  .controller('ContactCtrl', [ function() {
+      
+  }])
+
 
     .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {
       $scope.title = "EVENT";
