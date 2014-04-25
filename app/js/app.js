@@ -49,6 +49,11 @@ angular.module('bottleRocket', [
       .when('/events', {
           templateUrl: 'app/views/events.html',
           controller: 'EventsCtrl'
-      });
+      })
+
+      .when('/contact', {
+            templateUrl: 'app/views/contact.html',
+            controller: 'ContactCtrl'
+        });
 
 }]);

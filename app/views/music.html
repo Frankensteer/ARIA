@@ -1,29 +1,27 @@
 
-
-
-
       <!-- Search Bar -->
  
-        <div class="row">
- 
-          <div class="large-12 columns">
-          	       	 	<h1>Music</h1>
-            <div class="radius panel">
- 
+ <div class="row">
+
+      <div class="large-12 columns">
+          <h1>Music</h1>
+                
+             <div class="radius panel">
+
             <form>
               <div class="row collapse">
-    <p ng-bind-html="oEmbed.htmlSafe"></p>
-    <p>Searching for: {{query}}</p>
+                  <p ng-bind-html="oEmbed.htmlSafe"></p>
+                  <p>Searching for: {{query}}</p>
  
-                <div class="large-10 small-8 columns">
+                     <div class="large-10 small-8 columns">
                
-					<input ng-model="query" />
-                </div>
+					             <input type="text" ng-model="query" />
+                      </div>
  
-                <div class="large-2 small-3 columns">
-            <button ng-click = "searchSC()" class="postfix button expand">Search
-            </button>
-                </div>
+                      <div class="large-2 small-3 columns">
+                        <button ng-click = "searchSC()" class="postfix button expand">Search
+                        </button>
+                      </div>
  
               </div>
             </form>
@@ -33,14 +31,14 @@
           <div class="large-12 columns">
           	<div class="radius panel">
 
-        <ul>
-        <li ng-repeat="track in tracks" class="repeat-animation"><a ng-click="playTrack(this.track)">{{track.title}}</a></li>
-        </ul>
+              <ul>
+                <li ng-repeat="track in tracks" class="repeat-animation"><a ng-click="playTrack(this.track)">{{track.title}}</a></li>
+              </ul>
 
-    </div>
-</div>
+            </div>
           </div>
+      </div>
  
-        </div>
+  </div>
  
       <!-- End Search Bar -->
