@@ -29,7 +29,7 @@
   padding: 0;
 }
 
-/* logo */
+/* MAIN logo */
 
 .logo {
     background: rgba(240, 240, 240, 1);
@@ -49,3 +49,5 @@
 .dev {
     color: red;
 }
+
+/* END OF MAIN logo */
