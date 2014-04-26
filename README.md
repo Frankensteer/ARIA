@@ -1,4 +1,6 @@
-﻿# Project Info
+﻿Deployed at http://ec2-54-72-2-150.eu-west-1.compute.amazonaws.com/
+
+# Project Info
 
 A web app for music fans that lets them search for information about their favourite bands and displays related bands to allow them to discover new music, allows them to play music from SoundCloud, YouTube videos and media from other sources, and provides a service that allows users to see gigs that are on in their area or search for their favourite bands to see when they will be touring near them.
 
