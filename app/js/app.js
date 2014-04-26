@@ -16,7 +16,6 @@ angular.module('bottleRocket', [
   'bottleRocket.controllers',
   'facebook',
   'mm.foundation'
-
 ])
 
 .config(['$routeProvider', '$locationProvider', 'FacebookProvider', function($routeProvider, $locationProvider, FacebookProvider) {
@@ -24,6 +23,7 @@ angular.module('bottleRocket', [
 	FacebookProvider.init('636537143098707');
   
   $locationProvider.html5Mode(true);
+
 
 	$routeProvider
       
@@ -50,6 +50,18 @@ angular.module('bottleRocket', [
       .when('/events', {
           templateUrl: 'app/views/events.html',
           controller: 'EventsCtrl'
-      });
+      })
+
+       .when('/about', {
+          templateUrl: 'app/views/about.html',
+          controller: 'AboutCtrl'
+      })
+
+      .when('/contact', {
+            templateUrl: 'app/views/contact.html',
+            controller: 'ContactCtrl'
+        });
 
 }]);
+
+

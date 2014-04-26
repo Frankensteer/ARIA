@@ -42,19 +42,33 @@ angular.module('bottleRocket.controllers', [])
       
   }])
 
+  // Profile
+
 	.controller('ProfileCtrl', [ function() {
   		
 	}])
+
+  // About 
+
+  .controller('AboutCtrl', [ function() {
+      
+  }])
+
+  // Contact
+
+  .controller('ContactCtrl', [ function() {
+      
+  }])
 
 
     .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {
       $scope.title = "EVENT";
       $scope.searchBands =  function() {
           return bandsintownService.players($scope.band).then(function(data){
-
+               $scope.bandsPlaying = data;
               console.log(data);
           });
-      }
+      };
 
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {

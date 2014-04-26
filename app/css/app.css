@@ -28,3 +28,26 @@
   content: "";
   padding: 0;
 }
+
+/* MAIN logo */
+
+.logo {
+    background: rgba(240, 240, 240, 1);
+    border-radius: 4px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    float: left;
+    font-family: Sintony, Helvetica, sans-serif;
+    font-size: 3em;
+    margin: .15em auto;
+    padding: 0.5em;
+}
+
+.inspire {
+    color: black;
+}
+
+.dev {
+    color: red;
+}
+
+/* END OF MAIN logo */
