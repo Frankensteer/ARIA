@@ -5,6 +5,7 @@
   <title></title>
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="/lib/zurb/css/foundation.css"/>
+  <link rel="icon" type="img/ico" href="favicon.ico">
 </head>
 <body>
 
@@ -19,7 +20,7 @@
     </div>
     <div class="large-9 columns">
       <ul class="right button-group">
-    <li><a href="/app" class="button">Home</a></li>
+    <li class="active"><a href="/app" class="button">Home</a></li>
     <li><a href="/profile" class="button">Profile</a></li>
     <li><a href="/artist" class="button">Artist</a></li>
     <li><a href="/events" class="button">Events</a></li>
@@ -28,8 +29,12 @@
      </div>
    </div>
 
+
+
   
   <div ng-view></div>
+
+
 
 
       </div>
@@ -40,17 +45,21 @@
   <div class="row">
     <div class="large-12 columns">
     <div id="slider">
-
-<img src="img/Band_image.jpg" />
-        <div class="orbit-caption">
+      <ul class="data-orbit">
+   <img src="img/Band_image.jpg" />
+    </ul>
     </div>
     </div>
     
     <hr />
     </div>
   </div>
+
+
+
   
 <!-- Three-up Content Blocks -->
+
  
   <div class="row">
     <div class="large-4 columns">
@@ -141,9 +150,9 @@ Dublin, Ireland</p>
   <script src="js/directives.js"></script>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script src="mm-foundation-tpls-0.1.0.js"></script>
-  <script src="../lib/zurb/js/foundation.js"></script>
-  <script src="../lib/zurb/js/foundation.orbit.js"></script>
-  <script src="../lib/zurb/js/foundation.slider.js"></script>
+  <script src="/lib/zurb/js/foundation.js"></script>
+  <script src="/lib/zurb/js/foundation.orbit.js"></script>
+  <script src="/lib/zurb/js/foundation.slider.js"></script>
   <script>
       SC.initialize({
           client_id: '6d6beaec51371e43d5684a81f4c7e861'
