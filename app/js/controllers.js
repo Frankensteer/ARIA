@@ -8,6 +8,11 @@ angular.module('bottleRocket.controllers', [])
     
   }])
 
+  .controller('HomeCtrl', [ function() {
+    
+  }])
+
+
 	.controller('MusicCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
 
         // We should probably move this Soundcloud stuff out into a service and directive but it's not hugh priority
@@ -37,7 +42,7 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('HomeCtrl', ['$scope', 'seevlService', function($scope, seevlService)  {
+	.controller('ArtistCtrl', ['$scope', 'seevlService', function($scope, seevlService)  {
   		$scope.title = "HOME";
       $scope.search = function(query) {
         seevlService.search(query)
