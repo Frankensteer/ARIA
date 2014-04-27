@@ -2,11 +2,7 @@
 
 var app = angular.module('app', ['facebook']); // inject facebook module
 
-app.config(['FacebookProvider', function(FacebookProvider) {
-     // Here you could set your appId through the setAppId method and then initialize
-     // or use the shortcut in the initialize method directly.
-     FacebookProvider.init('636537143098707');
-}])
+
 // Declare app level module which depends on filters, and services
 angular.module('bottleRocket', [
   'ngRoute',

@@ -33,12 +33,14 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('HomeCtrl', ['$scope', 'seevlService', function($scope, seevlService )  {
+	.controller('HomeCtrl', ['$scope', 'seevlService', function($scope, seevlService)  {
   		$scope.title = "HOME";
-      seevlService.then(function(data){
-      console.log("seevl"+ data);
-	  });
-      
+      $scope.search = function(query) {
+        seevlService.search(query)
+        .then(function(data) {
+          console.log(data);
+        });
+      };
       
   }])
 
@@ -61,7 +63,7 @@ angular.module('bottleRocket.controllers', [])
   }])
 
 
-    .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {
+    .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService, $http) {
       $scope.title = "EVENT";
       $scope.searchBands =  function() {
           return bandsintownService.players($scope.band).then(function(data){
@@ -75,15 +77,27 @@ angular.module('bottleRocket.controllers', [])
           $scope.lat = position.coords.latitude;
           $scope.long = position.coords.longitude;
           console.log("GEOLOCATION: " + $scope.lat + ", " + $scope.long);
+          return $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
+            .then(function(data) {
+              console.log("DIS WAN");
+              console.log(data);
+          });
       }, function() {
-        alert("You need to give me permission to use your position to get Weather Info.");
+        alert("You need to give me permission to use your position to get Location Info.");
       });
     } else {
       // Default Lat & Long for Dublin
         console.log("DEFAULT GEOLOCATION")
         $scope.lat = 53.3478;
         $scope.long = 6.2597;
+        $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
+          .then(function(data) {
+            console.log("DIS WAN");
+            console.log(data);
+          });
     }
+
+
   
   }])
 
