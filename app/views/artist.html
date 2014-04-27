@@ -1,5 +1,3 @@
-<h2>{{title}}</h2>
-
 <!-- Search Bar -->
  
         <div class="row">
@@ -17,7 +15,7 @@
                   </div>
  
                   <div class="large-2 small-3 columns">
-                    <button class="postfix button expand" type="submit" ng-click="search(query)">Search</button>
+                    <button class="postfix button expand" type="submit" ng-click=search(query)>Search</button>
                   </div>
  
                 </div>
@@ -29,3 +27,18 @@
         </div>
  
       <!-- End Search Bar -->
+
+      <div>
+      	<h1>{{artistInfo.data.prefLabel}}</h1>
+      	<p>{{astistInfo.data.description.value}}</p>
+      	<hr />
+      	<h2>Facts</h2>
+      	<p>Genre: {{facts.data.genre}}</p>
+      	<p>Hometown: {{facts.data.origin.1.prefLabel}}</p>
+      	<hr />
+      	<h2>Related Artists</h2>
+      	<ul>
+      		<li ng-repeat="band in relatedBands.data.association">{{band.object.prefLabel}}</li>
+      	</ul>
+      	<hr />
+      </div>

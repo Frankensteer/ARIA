@@ -25,6 +25,12 @@ angular.module('bottleRocket.services', []).
 			},
 			getInfo: function(id) {
 				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/infos?callback=JSON_CALLBACK");
+			},
+			getRelated: function(id) {
+				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/related?callback=JSON_CALLBACK"); 
+			},
+			getFacts: function(id) {
+				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/facts?callback=JSON_CALLBACK");
 			}
 		}
 

@@ -42,20 +42,32 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('ArtistCtrl', ['$scope', 'seevlService', function($scope, seevlService)  {
-  		$scope.title = "HOME";
+	.controller('ArtistCtrl', ['$scope', 'seevlService', function($scope, seevlService) {
       $scope.search = function(query) {
         seevlService.search(query)
         .then(function(data) {
-          console.log(data);
+
           $scope.seevl_id = data.data.results[0].id;
-          console.log($scope.seevl_id);
+
           seevlService.getInfo($scope.seevl_id)
           .then(function(more_data) {
-            console.log(more_data);
+            $scope.artistInfo = more_data;
           });
+
+          seevlService.getRelated($scope.seevl_id)
+          .then(function(even_more_data) {
+            $scope.relatedBands = even_more_data;
+          });
+
+          seevlService.getFacts($scope.seevl_id)
+          .then(function(too_much_data) {
+            $scope.facts = too_much_data;
+            console.log("here:")
+            console.log($scope.facts);
+          })
+
         });
-      };
+      }
       
   }])
 
@@ -114,8 +126,4 @@ angular.module('bottleRocket.controllers', [])
 
 
   
-  }])
-
-	.controller('ArtistCtrl', [ function() {
-  	
   }]);
