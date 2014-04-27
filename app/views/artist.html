@@ -30,7 +30,7 @@
 
       <div>
       	<h1>{{artistInfo.data.prefLabel}}</h1>
-      	<p>{{astistInfo.data.description.value}}</p>
+      	<p ng-bind-html="artistDesc"></p>
       	<hr />
       	<h2>Facts</h2>
       	<p>Genre: {{facts.data.genre}}</p>

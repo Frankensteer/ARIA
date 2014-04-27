@@ -42,7 +42,7 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('ArtistCtrl', ['$scope', 'seevlService', function($scope, seevlService) {
+	.controller('ArtistCtrl', ['$scope', 'seevlService', '$sce', function($scope, seevlService, $sce) {
       $scope.search = function(query) {
         seevlService.search(query)
         .then(function(data) {
@@ -52,6 +52,7 @@ angular.module('bottleRocket.controllers', [])
           seevlService.getInfo($scope.seevl_id)
           .then(function(more_data) {
             $scope.artistInfo = more_data;
+            $scope.artistDesc = $sce.trustAsHtml(more_data.data.description.value);
           });
 
           seevlService.getRelated($scope.seevl_id)
