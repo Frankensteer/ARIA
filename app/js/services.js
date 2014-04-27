@@ -16,27 +16,18 @@ angular.module('bottleRocket.services', []).
 
 // &callback=JSON_CALLBACK must be appended to all URIs
 
-	.factory('echonestService', function() {
-		// this needs an API key which I do not want to check into Source Control,
-		// I'll come up with a workaround if we need to use it
-		
-		
-	})
-
 	.factory('seevlService', function($http) {
 		// sample URL: http://data.seevl.fm/entities/?prefLabel=nirvana
 		
 		return {
 			search: function(band) {
 				return $http.jsonp("http://data.seevl.fm/entities/?prefLabel=" + band + "&callback=JSON_CALLBACK");
+			},
+			getInfo: function(id) {
+				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/infos?callback=JSON_CALLBACK");
 			}
 		}
 
-	})
-
-
-	.factory('musicbrainzService', function($http) {
-		// search API only returns XML I think so we might not use this
 	})
 
 	.factory('youtubeService', function($http) {
@@ -44,25 +35,18 @@ angular.module('bottleRocket.services', []).
 		// will be more complicated than the others so we'll leave it for a while
 	})
 
-	
-	.factory('soundcloudService', function($http) {
-		// this service might not be necessary, SC uses an SDK that we'll have to integrate, it's easy to implement but might take too much effort to refactor into a service
-	})
-
 	.factory('bandsintownService', function($http) {
 //	The Bandsintown V2 API currently does not require authentication but does require that an application ID (app_id) parameter be passed with every request to identify yourself. See the example below:
 	//	http://api.bandsintown.com/artists/Skrillex/events.json?api_version=2.0&app_id=YOUR_APP_ID
 	//	The application ID can be anything, but should be a word that describes your application or company.
 
-	//	Sample URL for this request: http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=YOUR_APP_ID
+	//	Sample URL for this request: http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=YOUR_APP_ID&callback=JSON_CALLBACK
 
 
         return {
             players: function(band) {
               return $http.jsonp("http://api.bandsintown.com/artists/" + band + ".json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK");
-       }
-     }
-
-		return	$http.jsonp("http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK");
+       		}
+     	}
 
 	});

@@ -4,7 +4,11 @@
 
 angular.module('bottleRocket.controllers', [])
 
-	.controller('MainCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
+  .controller('MainCtrl', [ function() {
+    
+  }])
+
+	.controller('MusicCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
 
         // We should probably move this Soundcloud stuff out into a service and directive but it's not hugh priority
         $scope.searchSC = function() {
@@ -39,6 +43,12 @@ angular.module('bottleRocket.controllers', [])
         seevlService.search(query)
         .then(function(data) {
           console.log(data);
+          $scope.seevl_id = data.data.results[0].id;
+          console.log($scope.seevl_id);
+          seevlService.getInfo($scope.seevl_id)
+          .then(function(more_data) {
+            console.log(more_data);
+          });
         });
       };
       

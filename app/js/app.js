@@ -1,8 +1,5 @@
 'use strict';
 
-var app = angular.module('app', ['facebook']); // inject facebook module
-
-
 // Declare app level module which depends on filters, and services
 angular.module('bottleRocket', [
   'ngRoute',
@@ -40,7 +37,7 @@ angular.module('bottleRocket', [
 
         .when('/music', {
             templateUrl: 'app/views/music.html',
-            controller: 'MainCtrl'
+            controller: 'MusicCtrl'
         })
 
       .when('/events', {
