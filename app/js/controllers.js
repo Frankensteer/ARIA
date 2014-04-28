@@ -47,8 +47,13 @@ angular.module('bottleRocket.controllers', [])
         seevlService.search(query)
         .then(function(data) {
 
+          $scope.youtube_id = "qv96yJYhk3M";
+          var video_url = "http://www.youtube.com/embed/" + $scope.youtube_id; 
+
           $scope.seevl_id = data.data.results[0].id;
           $scope.info = true;
+
+          $scope.videoUrl = $sce.trustAsResourceUrl(video_url);
 
           seevlService.getInfo($scope.seevl_id)
           .then(function(more_data) {

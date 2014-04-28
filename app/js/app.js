@@ -11,11 +11,17 @@ angular.module('bottleRocket', [
   'mm.foundation'
 ])
 
-.config(['$routeProvider', '$locationProvider', 'FacebookProvider', function($routeProvider, $locationProvider, FacebookProvider) {
+.config(['$routeProvider', '$locationProvider', 'FacebookProvider', '$sceDelegateProvider', function($routeProvider, $locationProvider, FacebookProvider, $sceDelegateProvider) {
 
 	FacebookProvider.init('636537143098707');
   
   $locationProvider.html5Mode(true);
+
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'http://www.youtube.com/**']);
 
 
 	$routeProvider
