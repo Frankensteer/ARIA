@@ -42,18 +42,18 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('ArtistCtrl', ['$scope', 'seevlService', '$sce', function($scope, seevlService, $sce) {
+	.controller('ArtistCtrl', ['$scope', 'seevlService', '$sce', 'youtubeService', '$timeout', function($scope, seevlService, $sce, youtubeService, $timeout) {
+
       $scope.search = function(query) {
         seevlService.search(query)
         .then(function(data) {
 
-          $scope.youtube_id = "qv96yJYhk3M";
+          $scope.query = query;
+
           var video_url = "http://www.youtube.com/embed/" + $scope.youtube_id; 
 
           $scope.seevl_id = data.data.results[0].id;
           $scope.info = true;
-
-          $scope.videoUrl = $sce.trustAsResourceUrl(video_url);
 
           seevlService.getInfo($scope.seevl_id)
           .then(function(more_data) {
@@ -69,6 +69,14 @@ angular.module('bottleRocket.controllers', [])
           seevlService.getFacts($scope.seevl_id)
           .then(function(too_much_data) {
             $scope.facts = too_much_data;
+          });
+
+          youtubeService.search($scope.query)
+          .then(function(vdata) {
+              $scope.youtube_id = vdata.data.data.items[0].id;
+              video_url = "http://www.youtube.com/embed/" + $scope.youtube_id;
+              $scope.videoUrl = $sce.trustAsResourceUrl(video_url);
+              // $scope.$apply();
           });
 
         });

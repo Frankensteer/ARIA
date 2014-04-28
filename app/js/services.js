@@ -39,6 +39,11 @@ angular.module('bottleRocket.services', []).
 	.factory('youtubeService', function($http) {
 		// this also needs an API key
 		// will be more complicated than the others so we'll leave it for a while
+		return {
+			search: function(query) {
+				return $http.jsonp("http://gdata.youtube.com/feeds/api/videos?q=" + query + "&format=5&max-results=1&v=2&alt=jsonc&callback=JSON_CALLBACK");
+			}
+		}
 	})
 
 	.factory('bandsintownService', function($http) {
