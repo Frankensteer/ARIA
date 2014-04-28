@@ -48,6 +48,7 @@ angular.module('bottleRocket.controllers', [])
         .then(function(data) {
 
           $scope.seevl_id = data.data.results[0].id;
+          $scope.info = true;
 
           seevlService.getInfo($scope.seevl_id)
           .then(function(more_data) {
@@ -63,9 +64,7 @@ angular.module('bottleRocket.controllers', [])
           seevlService.getFacts($scope.seevl_id)
           .then(function(too_much_data) {
             $scope.facts = too_much_data;
-            console.log("here:")
-            console.log($scope.facts);
-          })
+          });
 
         });
       }

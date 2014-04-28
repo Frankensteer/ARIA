@@ -15,7 +15,7 @@
                   </div>
  
                   <div class="large-2 small-3 columns">
-                    <button class="postfix button expand" type="submit" ng-click=search(query)>Search</button>
+                    <button class="postfix button expand" type="submit" ng-click="search(query)">Search</button>
                   </div>
  
                 </div>
@@ -28,17 +28,19 @@
  
       <!-- End Search Bar -->
 
-      <div>
+      <div ng-show="info === true">
       	<h1>{{artistInfo.data.prefLabel}}</h1>
       	<p ng-bind-html="artistDesc"></p>
       	<hr />
       	<h2>Facts</h2>
-      	<p>Genre: {{facts.data.genre}}</p>
-      	<p>Hometown: {{facts.data.origin.1.prefLabel}}</p>
+        <p>Hometown: {{facts.data.origin.0.prefLabel}}</p>
+      	<p>Genre: <span ng-repeat="genre in facts.data.genre">{{genre.prefLabel}}</span></p>
+        <p>Members: <span ng-repeat="member in facts.data.membership.artist">{{member.prefLabel}}</span></p>
+        <p>Record Label: <span ng-repeat="label in facts.data.label">{{label.prefLabel}}</span></p>
+        <p>Collaborators: <span ng-repeat="collaborator in facts.data.collaborated_with">{{collaborator.prefLabel}}</span></p>
       	<hr />
       	<h2>Related Artists</h2>
       	<ul>
       		<li ng-repeat="band in relatedBands.data.association">{{band.object.prefLabel}}</li>
       	</ul>
-      	<hr />
       </div>
