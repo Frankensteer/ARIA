@@ -1,12 +1,5 @@
 'use strict';
 
-var app = angular.module('app', ['facebook']); // inject facebook module
-
-app.config(['FacebookProvider', function(FacebookProvider) {
-     // Here you could set your appId through the setAppId method and then initialize
-     // or use the shortcut in the initialize method directly.
-     FacebookProvider.init('636537143098707');
-}])
 // Declare app level module which depends on filters, and services
 angular.module('bottleRocket', [
   'ngRoute',
@@ -18,11 +11,17 @@ angular.module('bottleRocket', [
   'mm.foundation'
 ])
 
-.config(['$routeProvider', '$locationProvider', 'FacebookProvider', function($routeProvider, $locationProvider, FacebookProvider) {
+.config(['$routeProvider', '$locationProvider', 'FacebookProvider', '$sceDelegateProvider', function($routeProvider, $locationProvider, FacebookProvider, $sceDelegateProvider) {
 
 	FacebookProvider.init('636537143098707');
   
   $locationProvider.html5Mode(true);
+
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'http://www.youtube.com/**']);
 
 
 	$routeProvider
@@ -44,7 +43,7 @@ angular.module('bottleRocket', [
 
         .when('/music', {
             templateUrl: 'app/views/music.html',
-            controller: 'MainCtrl'
+            controller: 'MusicCtrl'
         })
 
       .when('/events', {
@@ -63,3 +62,5 @@ angular.module('bottleRocket', [
         });
 
 }]);
+
+

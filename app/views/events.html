@@ -2,7 +2,7 @@
 
 <p>This is the Events page. It will show upcoming events near the user's current location, using HTML5 Geolocation and the BandsInTown API.</p>
 
-<p>Search For Event:</p>
+<!-- <h4>Search For Event:</h4> -->
 <!-- <input ng-model="band" />
 <button ng-click = "searchBands($scope.band)">Search</button> -->
 
@@ -12,11 +12,12 @@
  
           <div class="large-12 columns">
             <div class="radius panel">
+                <h4>Searching for: {{query}}</h4>
  
             <form>
               <div class="row collapse">
+                <p ng-bind-html="oEmbed.htmlSafe"></p>
 
-              	 <p>Search For Event:</p>
  
                 <div class="large-10 small-8 columns">
                

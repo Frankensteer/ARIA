@@ -4,7 +4,16 @@
 
 angular.module('bottleRocket.controllers', [])
 
-	.controller('MainCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
+  .controller('MainCtrl', [ function() {
+    
+  }])
+
+  .controller('HomeCtrl', [ function() {
+    
+  }])
+
+
+	.controller('MusicCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
 
         // We should probably move this Soundcloud stuff out into a service and directive but it's not hugh priority
         $scope.searchSC = function() {
@@ -33,12 +42,45 @@ angular.module('bottleRocket.controllers', [])
   	}])
 
   // basic code for accessing data from AJAX service
-	.controller('HomeCtrl', ['$scope', 'seevlService', function($scope, seevlService )  {
-  		$scope.title = "HOME";
-      seevlService.then(function(data){
-      console.log("seevl"+ data);
-	  });
-      
+	.controller('ArtistCtrl', ['$scope', 'seevlService', '$sce', 'youtubeService', '$timeout', function($scope, seevlService, $sce, youtubeService, $timeout) {
+
+      $scope.search = function(query) {
+        seevlService.search(query)
+        .then(function(data) {
+
+          $scope.query = query;
+
+          var video_url = "http://www.youtube.com/embed/" + $scope.youtube_id; 
+
+          $scope.seevl_id = data.data.results[0].id;
+          $scope.info = true;
+
+          seevlService.getInfo($scope.seevl_id)
+          .then(function(more_data) {
+            $scope.artistInfo = more_data;
+            $scope.artistDesc = $sce.trustAsHtml(more_data.data.description.value);
+          });
+
+          seevlService.getRelated($scope.seevl_id)
+          .then(function(even_more_data) {
+            $scope.relatedBands = even_more_data;
+          });
+
+          seevlService.getFacts($scope.seevl_id)
+          .then(function(too_much_data) {
+            $scope.facts = too_much_data;
+          });
+
+          youtubeService.search($scope.query)
+          .then(function(vdata) {
+              $scope.youtube_id = vdata.data.data.items[0].id;
+              video_url = "http://www.youtube.com/embed/" + $scope.youtube_id;
+              $scope.videoUrl = $sce.trustAsResourceUrl(video_url);
+              // $scope.$apply();
+          });
+
+        });
+      }
       
   }])
 
@@ -61,7 +103,7 @@ angular.module('bottleRocket.controllers', [])
   }])
 
 
-    .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService) {
+    .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService, $http) {
       $scope.title = "EVENT";
       $scope.searchBands =  function() {
           return bandsintownService.players($scope.band).then(function(data){
@@ -75,18 +117,26 @@ angular.module('bottleRocket.controllers', [])
           $scope.lat = position.coords.latitude;
           $scope.long = position.coords.longitude;
           console.log("GEOLOCATION: " + $scope.lat + ", " + $scope.long);
+          return $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
+            .then(function(data) {
+              console.log("DIS WAN");
+              console.log(data);
+          });
       }, function() {
-        alert("You need to give me permission to use your position to get Weather Info.");
+        alert("You need to give me permission to use your position to get Location Info.");
       });
     } else {
       // Default Lat & Long for Dublin
         console.log("DEFAULT GEOLOCATION")
         $scope.lat = 53.3478;
         $scope.long = 6.2597;
+        $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
+          .then(function(data) {
+            console.log("DIS WAN");
+            console.log(data);
+          });
     }
-  
-  }])
 
-	.controller('ArtistCtrl', [ function() {
-  	
+
+  
   }]);
