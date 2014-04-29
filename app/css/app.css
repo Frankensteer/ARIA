@@ -31,13 +31,18 @@
 
 /* MAIN logo */
 
+.band {
+  width:1000px;
+  height:400px;
+}
+
 .logo {
     background: rgba(240, 240, 240, 1);
     border-radius: 4px;
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
     float: left;
     font-family: Sintony, Helvetica, sans-serif;
-    font-size: 3em;
+    font-size: 2em;
     margin: .15em auto;
     padding: 0.5em;
 }
