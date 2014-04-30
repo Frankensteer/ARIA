@@ -139,4 +139,13 @@ angular.module('bottleRocket.controllers', [])
 
 
   
-  }]);
+  }])
+    //New stuff added by PJ
+    .controller('MovieCtrl', function ($scope, rottentomatoesFactory) {
+        rottentomatoesFactory.getMovies()
+            .then(function(movies) {
+                console.log(movies);
+                $scope.movies=movies;
+            });
+            });
+
