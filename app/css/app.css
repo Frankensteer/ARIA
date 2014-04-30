@@ -32,8 +32,19 @@
 /* MAIN logo */
 
 .band {
-  width:1000px;
+  margin-top: 10px;
+  width:940px;
   height:400px;
+}
+
+.mid-img {
+  width:400px;
+  height:300px;
+  padding: 5px;
+}
+
+.mid {
+  mar: 5px;
 }
 
 .logo {

@@ -6,10 +6,7 @@ angular.module ('bottleRocket.animations',[ ])
 		return {
 		    enter : function(element, done) {
 		      $(element).css({
-		        position:'relative',
-		        'z-index':-2,
-		        top:600,
-		        opacity:0
+		        background:'#54D586'
 		      });
 		      $(element).animate({
 		        top:100,
@@ -19,10 +16,7 @@ angular.module ('bottleRocket.animations',[ ])
 
 		    leave : function(element, done) {
 		      $(element).css({
-		        position:'relative',
-		        'z-index':-3,
-		        top:0,
-		        opacity:1
+		        background:'#54D586'
 		      });
 		      $(element).animate({
 		        top:-600,
