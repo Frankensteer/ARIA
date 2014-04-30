@@ -1,8 +1,12 @@
 <!-- Search Bar -->
  
         <div class="row">
+
+
  
           <div class="large-12 columns">
+
+              <h1>Artist</h1>
             <div class="radius panel">
 
             	<h4>Searching for: {{query}}</h4>
@@ -28,6 +32,7 @@
  
       <!-- End Search Bar -->
 
+      
       <div ng-show="info === true">
       	<h1>{{artistInfo.data.prefLabel}}</h1>
       	<p ng-bind-html="artistDesc"></p>
