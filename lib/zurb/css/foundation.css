@@ -24,6 +24,8 @@ meta.foundation-mq-xxlarge {
 meta.foundation-data-attribute-namespace {
   font-family: false; }
 
+
+
 html, body {
   height: 100%; }
 
@@ -39,8 +41,8 @@ body {
   font-size: 100%; }
 
 body {
-  background: #03DAF6;
-  color: #222222;
+  background: #54D586;
+  color: #F2F5C4;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
