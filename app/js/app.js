@@ -8,7 +8,8 @@ angular.module('bottleRocket', [
   'bottleRocket.directives',
   'bottleRocket.controllers',
   'facebook',
-  'mm.foundation'
+  'mm.foundation',
+  'ngAnimate'
 ])
 
 .config(['$routeProvider', '$locationProvider', 'FacebookProvider', '$sceDelegateProvider', function($routeProvider, $locationProvider, FacebookProvider, $sceDelegateProvider) {
