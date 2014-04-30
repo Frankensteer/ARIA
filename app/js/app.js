@@ -9,7 +9,8 @@ angular.module('bottleRocket', [
   'bottleRocket.controllers',
   'facebook',
   'mm.foundation',
-  'ngAnimate'
+  'ngAnimate',
+  'bottleRocket.animations'
 ])
 
 .config(['$routeProvider', '$locationProvider', 'FacebookProvider', '$sceDelegateProvider', function($routeProvider, $locationProvider, FacebookProvider, $sceDelegateProvider) {
