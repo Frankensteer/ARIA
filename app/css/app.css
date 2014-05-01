@@ -32,20 +32,10 @@
 /* MAIN logo */
 
 .band {
-  margin-top: 10px;
   width:940px;
   height:400px;
 }
 
-.mid-img {
-  width:400px;
-  height:300px;
-  padding: 5px;
-}
-
-.mid {
-  mar: 5px;
-}
 
 .logo {
     background: rgba(240, 240, 240, 1);
