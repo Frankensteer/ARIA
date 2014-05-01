@@ -60,4 +60,12 @@ angular.module('bottleRocket.services', []).
        		}
      	}
 
-	});
+	})
+
+    .factory('rottentomatoesFactory', function($http) {
+        return {
+        getMovies: function() {
+             return $http.jsonp("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=16&page=1&country=ie&apikey=2fu8bhwngnxuc6a56pburxfm&callback=JSON_CALLBACK");
+             }
+        }
+    });

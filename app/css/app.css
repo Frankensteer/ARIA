@@ -32,9 +32,10 @@
 /* MAIN logo */
 
 .band {
-  width:1000px;
+  width:940px;
   height:400px;
 }
+
 
 .logo {
     background: rgba(240, 240, 240, 1);
@@ -53,6 +54,16 @@
 
 .dev {
     color: red;
+}
+
+dt {
+    font-size: 20px;
+}
+
+dl:first-child {
+    font-size: 14px;
+    float: left;
+    padding: 5px;
 }
 
 /* END OF MAIN logo */
