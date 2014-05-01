@@ -44,10 +44,16 @@ describe('service', function() {
         .when("JSONP", "http://gdata.youtube.com/feeds/api/videos?q=nirvana&format=5&max-results=1&v=2&alt=jsonc&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotVideoFromYoutube"});
 
-    // Rotten Tomatoes
+    // Rotten Tomatoes request
     $httpBackend
         .when("JSONP", "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=16&page=1&country=ie&apikey=2fu8bhwngnxuc6a56pburxfm&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotMoviesFromRottenTomatoes"});
+
+    // BandsInTown request
+    $httpBackend
+        .when("JSONP", "http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK")
+        	.respond(200, {value: "gotBandFromBandsInTown"});
+
         	
   }));
 
@@ -122,11 +128,23 @@ describe('service', function() {
   	}));
   });
 
-  describe('youtubeFactory test', function() {
+  describe('rottentomatoesFactory test', function() {
   	it('.value should be "gotMoviesFromRottenTomatoes', inject(function (rottentomatoesFactory) {
 
   		rottentomatoesFactory.getMovies().success(function(response) {
   			expect(response.value).toEqual("gotMoviesFromRottenTomatoes");
+  		}).error( function(response) {
+  			expect(false).toEqual(true);
+  		});
+
+  	}));
+  });
+
+  describe('bandsintownService test', function() {
+  	it('.value should be "gotBandFromBandsInTown', inject(function (bandsintownService) {
+
+  		bandsintownService.players("Skrillex").success(function(response) {
+  			expect(response.value).toEqual("gotBandFromBandsInTown");
   		}).error( function(response) {
   			expect(false).toEqual(true);
   		});
