@@ -56,4 +56,14 @@
     color: red;
 }
 
+dt {
+    font-size: 20px;
+}
+
+dl:first-child {
+    font-size: 14px;
+    float: left;
+    padding: 5px;
+}
+
 /* END OF MAIN logo */

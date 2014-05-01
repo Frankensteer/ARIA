@@ -1,3 +1,14 @@
-<h1>Movie</h1>
+<h1>Movies Playing in Your Area</h1>
 
-        <p ng-repeat = "movie in movies.data.movies">{{ movie.title }}</p>
+        <dl ng-repeat = "movie in movies.data.movies">
+            <dt>{{ movie.title }}</dt>
+
+            <!--
+            <dt>Starring</dt>
+            <dd ng-repeat = "movie in movies.data.movies">{{ movie.abridged_cast.characters.name }}</dd>
+            -->
+
+            <dd><img ng-src="{{ movie.posters.thumbnail }}"></dd>
+
+            <dd>{{ movie.synopsis }}</dd>
+        </dl>
