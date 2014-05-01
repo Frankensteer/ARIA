@@ -24,6 +24,8 @@ describe('service', function() {
     $httpBackend = $injector.get("$httpBackend");
 
     // configure the requests
+    
+    // Seevl Requests
     $httpBackend
         .when("JSONP", "http://data.seevl.fm/entities/?prefLabel=nirvana&user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotSearchDataFromSeevl"});
@@ -36,6 +38,14 @@ describe('service', function() {
     $httpBackend
         .when("JSONP", "http://data.seevl.fm/entities/RkMQZrfG/facts?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotFactsDataFromSeevl"});
+
+    // YouTube Request
+    $httpBackend
+        .when("JSONP", "http://gdata.youtube.com/feeds/api/videos?q=nirvana&format=5&max-results=1&v=2&alt=jsonc&callback=JSON_CALLBACK")
+        	.respond(200, {value: "gotVideoFromYoutube"});
+
+
+        	
   }));
 
   afterEach(function () {
@@ -96,6 +106,17 @@ describe('service', function() {
   	});
 
   });
-  
 
+  describe('youtubeService tests', function() {
+  	it('.value should be "gotVideoFromYoutube', inject(function (youtubeService) {
+
+  			youtubeService.search("nirvana").success(function(response) {
+  		  		expect(response.value).toEqual("gotVideoFromYoutube");
+  			}).error( function(response) {
+  		  		expect(false).toEqual(true);
+  			});
+
+  		}));
+  });
+  
 });
