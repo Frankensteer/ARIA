@@ -21,16 +21,16 @@ angular.module('bottleRocket.services', []).
 		
 		return {
 			search: function(band) {
-				return $http.jsonp("http://data.seevl.fm/entities/?prefLabel=" + band + "&callback=JSON_CALLBACK");
+				return $http.jsonp("http://data.seevl.fm/entities/?prefLabel=" + band + "&user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK");
 			},
 			getInfo: function(id) {
-				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/infos?callback=JSON_CALLBACK");
+				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/infos?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK");
 			},
 			getRelated: function(id) {
-				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/related?callback=JSON_CALLBACK"); 
+				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/related?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK"); 
 			},
 			getFacts: function(id) {
-				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/facts?callback=JSON_CALLBACK");
+				return $http.jsonp("http://data.seevl.fm/entities/" + id + "/facts?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK");
 			}
 		}
 
@@ -60,6 +60,17 @@ angular.module('bottleRocket.services', []).
        		}
      	}
 
+	})
+
+	.factory('songkickService', function($http) {
+		return {
+			getMetroArea: function() {
+				return $http.jsonp("http://api.songkick.com/api/3.0/search/locations.json?location=clientip&apikey=u0Djnk8AUNL26y43&jsoncallback=JSON_CALLBACK");
+			},
+			getUpcomingEvents: function(area) {
+				return $http.jsonp("http://api.songkick.com/api/3.0/metro_areas/" + area + "/calendar.json?apikey=u0Djnk8AUNL26y43&jsoncallback=JSON_CALLBACK");
+			}
+		}
 	})
 
     .factory('rottentomatoesFactory', function($http) {

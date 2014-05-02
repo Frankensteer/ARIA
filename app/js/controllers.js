@@ -196,7 +196,7 @@ angular.module('bottleRocket.controllers', [])
   }])
 
 
-    .controller('EventsCtrl', ['$scope', 'bandsintownService', function($scope, bandsintownService, $http) {
+    .controller('EventsCtrl', ['$scope', 'bandsintownService', 'songkickService', function($scope, bandsintownService, songkickService) {
       $scope.title = "EVENT";
       $scope.searchBands =  function() {
           return bandsintownService.players($scope.band).then(function(data){
@@ -205,17 +205,22 @@ angular.module('bottleRocket.controllers', [])
           });
       };
 
+
+
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
           $scope.lat = position.coords.latitude;
           $scope.long = position.coords.longitude;
           console.log("GEOLOCATION: " + $scope.lat + ", " + $scope.long);
-          $scope.$apply();
-          // Want to do something with the SongKick API here but can't get an API key :(
-          // return $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
-          //   .then(function(data) {
-          //     //
-          // });
+          songkickService.getMetroArea()
+            .then(function(area) {
+              $scope.areaData = area;
+              $scope.metroId = area.data.resultsPage.results.location[0].metroArea.id;
+              songkickService.getUpcomingEvents($scope.metroId)
+                .then(function(events) {
+                  $scope.upcomingEvents = events.data.resultsPage.results.event;
+                });
+            });
       }, function() {
         alert("You need to give me permission to use your position to get Location Info.");
       });
@@ -224,12 +229,15 @@ angular.module('bottleRocket.controllers', [])
         console.log("DEFAULT GEOLOCATION")
         $scope.lat = 53.3478;
         $scope.long = 6.2597;
-        $scope.$apply();
-        // Want to do something with the SongKick API here but can't get an API key :(
-        // $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
-        //   .then(function(data) {
-        //     //
-        //   });
+        songkickService.getMetroArea()
+            .then(function(area) {
+              $scope.areaData = area;
+              $scope.metroId = area.data.resultsPage.results.location[0].metroArea.id;
+              songkickService.getUpcomingEvents($scope.metroId)
+                .then(function(events) {
+                  $scope.upcomingEvents = events.data.resultsPage.results.event;
+                });
+            });
     }
 
 
