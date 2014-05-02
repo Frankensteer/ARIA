@@ -26,15 +26,19 @@ describe('service', function() {
     // configure the requests
     
     // Seevl Requests
+    // Search
     $httpBackend
         .when("JSONP", "http://data.seevl.fm/entities/?prefLabel=nirvana&user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotSearchDataFromSeevl"});
+    // Info
     $httpBackend
         .when("JSONP", "http://data.seevl.fm/entities/RkMQZrfG/infos?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotInfoDataFromSeevl"});
+    // Related
     $httpBackend
         .when("JSONP", "http://data.seevl.fm/entities/RkMQZrfG/related?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotRelatedDataFromSeevl"});
+    // Facts
     $httpBackend
         .when("JSONP", "http://data.seevl.fm/entities/RkMQZrfG/facts?user_key=f934179d7329edcc16058765fb653a77&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotFactsDataFromSeevl"});
@@ -54,6 +58,16 @@ describe('service', function() {
         .when("JSONP", "http://api.bandsintown.com/artists/Skrillex.json?api_version=2.0&app_id=bottleRocket&callback=JSON_CALLBACK")
         	.respond(200, {value: "gotBandFromBandsInTown"});
 
+    // Songkick Requests
+    // Location
+    $httpBackend
+        .when("JSONP", "http://api.songkick.com/api/3.0/search/locations.json?location=clientip&apikey=u0Djnk8AUNL26y43&jsoncallback=JSON_CALLBACK")
+          .respond(200, {value: "gotLocationFromSongKick"});
+    // Events      
+    $httpBackend
+        .when("JSONP", "http://api.songkick.com/api/3.0/metro_areas/24426/calendar.json?apikey=u0Djnk8AUNL26y43&jsoncallback=JSON_CALLBACK")
+          .respond(200, {value: "gotEventsFromSongKick"});      
+          
         	
   }));
 
@@ -150,6 +164,32 @@ describe('service', function() {
   		});
 
   	}));
+  });
+
+  describe('songkickService tests', function() {
+    describe('songkickService Location http request', function() {
+      it('.value should be "gotLocationFromSongKick', inject(function (songkickService) {
+
+        songkickService.getMetroArea().success(function(response) {
+          expect(response.value).toEqual("gotLocationFromSongKick");
+        }).error( function(response) {
+          expect(false).toEqual(true);
+        });
+      }));
+
+    });
+
+    describe('songkickService Event http request', function() {
+      it('.value should be "gotEventsFromSongKick', inject(function (songkickService) {
+
+        songkickService.getUpcomingEvents("24426").success(function(response) {
+          expect(response.value).toEqual("gotEventsFromSongKick");
+        }).error( function(response) {
+          expect(false).toEqual(true);
+        });
+      }));
+
+    });
   });
   
 });
