@@ -1,22 +1,58 @@
-<h1>Movies Playing in Your Area</h1>
 
-        <div ng-repeat = "movie in movies.data.movies">
+<div class="row">
+  <div class="large-12 columns">
+
+  <div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h2>Movies</h2>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>Find movies that are showing in your area.</p>
+          </div>
+          <div class="large-3 columns">
+             <div class="logo">
+              <span class="inspire">bottle</span>
+              <span class="dev">rocket</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+        <div ng-repeat = "movie in movies.data.movies"> 
+
+
             <h4>{{ movie.title }}</h4>
+
+            <div class="row">
+          <div class="large-3 columns">
 
             <img class = "movieImage" ng-src="{{ movie.posters.thumbnail }}">
 
+          </div>
+        </div>
+
+          <div class="row">
+          <div class="large-9 columns">
+
             <div class = "movieSynop">{{ movie.synopsis }}</div>
+
+            <hr>
+
+             </div>
+        </div>
+
         </div>
 
 
 
-        <div class="row">
-  <div class="small-3 columns">
-
-  </div>
-
-  <div class="small-9 columns">
-  
-
-  </div>
 </div>
+</div>
+
+
