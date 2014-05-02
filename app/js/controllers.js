@@ -4,21 +4,30 @@
 
 angular.module('bottleRocket.controllers', [])
 
-  .controller('MainCtrl', [ function() {
-    
-  }])
-
   .controller('HomeCtrl', [ function() {
     
   }])
 
+  .controller('MainCtrl', ['$scope', function($scope) {
+    // simple function for setting up Controller tests
+    // taken from: http://odetocode.com/blogs/scott/archive/2013/06/10/simple-unit-tests-with-angularjs.aspx
+    $scope.x = 3;
+    $scope.y = 4;
+    $scope.doubleIt = function () {
+      $scope.x *= 2;
+      $scope.y *= 2;
+    };
 
-	.controller('MusicCtrl', ['$scope', '$sce', '$route', function($scope, $sce, $route) {
+  }])
+
+
+	.controller('MusicCtrl', ['$scope', '$sce', '$route', '$location', function($scope, $sce, $route) {
 
         // We should probably move this Soundcloud stuff out into a service and directive but it's not hugh priority
         $scope.searchSC = function() {
             SC.get('/tracks', { q: $scope.query, limit: 10 }, function(tracks) {
                 $scope.tracks = tracks;
+                $scope.tracks_set = true;
                 $scope.$apply();
             });
 
@@ -27,6 +36,7 @@ angular.module('bottleRocket.controllers', [])
                 SC.oEmbed(track_url, { auto_play: true }, function(oEmbed) {
                     $scope.oEmbed = oEmbed;
                     $scope.oEmbed.htmlSafe = $sce.trustAsHtml(oEmbed.html);
+                    $scope.trackPlaying = true;
                     $scope.$apply();
                 });
             }
