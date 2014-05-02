@@ -1,12 +1,35 @@
 <!-- Search Bar -->
  
+        
+ <div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h2>Artists</h2>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>Here you can find information on music artists and bands.</p>
+          </div>
+          <div class="large-3 columns">
+             <div class="logo">
+              <span class="inspire">bottle</span>
+              <span class="dev">rocket</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
         <div class="row">
 
 
  
           <div class="large-12 columns">
 
-              <h1>Artist</h1>
             <div class="radius panel">
 
             	<h4>Searching for: {{query}}</h4>
@@ -32,7 +55,8 @@
  
       <!-- End Search Bar -->
 
-      
+      <div class="row">
+
       <div ng-show="info === true">
       	<h1>{{artistInfo.data.prefLabel}}</h1>
       	<p ng-bind-html="artistDesc"></p>
@@ -53,3 +77,5 @@
         <!-- <button ng-click="playYT()" ng-show="playVid === false">Play A Video</button> -->
         <iframe width="420" height="315" ng-src="{{videoUrl}}" frameborder="0" allowfullscreen></iframe>
       </div>
+
+    </div>
