@@ -46,19 +46,22 @@ angular.module('bottleRocket.controllers', [])
 
       $scope.search = function(query) {
         seevlService.search(query)
-        .then(function(data) {
+        .success(function(data) {
 
           $scope.query = query;
 
-          var video_url = "http://www.youtube.com/embed/" + $scope.youtube_id; 
+          var video_url = "http://www.syoutube.com/embed/" + $scope.youtube_id; 
 
           $scope.seevl_id = data.data.results[0].id;
           $scope.info = true;
 
           seevlService.getInfo($scope.seevl_id)
-          .then(function(more_data) {
+          .success(function(more_data) {
             $scope.artistInfo = more_data;
             $scope.artistDesc = $sce.trustAsHtml(more_data.data.description.value);
+          })
+          .error(function(more_data) {
+            console.log("Another Error Caught!")
           });
 
           seevlService.getRelated($scope.seevl_id)
@@ -79,8 +82,98 @@ angular.module('bottleRocket.controllers', [])
               // $scope.$apply();
           });
 
-        });
-      }
+        })
+      .error(function(data) {
+        console.log("ERROR CAUGHT");
+        // Dummy data for demoing while Seevl API is down
+        $scope.query = "nirvana";
+        var video_url = "http://www.youtube.com/embed/50Y8UBKI09k";
+        $scope.videoUrl = video_url;
+        $scope.info = true;
+        
+        $scope.artistDesc =  $sce.trustAsHtml("<p><strong>Nirvana</strong> was an American rock band formed by singer/guitarist Kurt Cobain and bassist Krist Novoselic in Aberdeen, Washington in 1987. Nirvana went through a succession of drummers, the longest-lasting being Dave Grohl, who joined the band in 1990. Despite releasing only three full-length studio albums in their seven-year career, Nirvana has come to be regarded as one of the most influential and important rock bands of the modern era.</p>");
+
+        $scope.facts = {
+          "data": {
+            "origin": {
+              "0": {
+                "prefLabel": "Aberdeen"
+              }
+            },
+            "genre": {
+              "0": {
+                "prefLabel": "punk"
+              },
+              "1": {
+                "prefLabel": "rock"
+              },
+              "2": {
+                "prefLabel": "other"
+              }
+            },
+            "membership": {
+              "artist": {
+                "0": {
+                  "prefLabel": "Kurt Cobain"
+                },
+                "1": {
+                  "prefLabel": "Krist Novoselic"
+                },
+                "2": {
+                  "prefLabel": "Dave Grohl"
+                }
+              }
+            },
+            "label": {
+              "0": {
+                "prefLabel": "A Record Label"
+              },
+              "1": {
+                "prefLabel": "Another Label"
+              },
+              "2": {
+                "prefLabel": "SubPop"
+              }
+            },
+            "collaborated_with": {
+              "0": {
+                "prefLabel": "Courtney Love"
+              },
+              "1": {
+                "prefLabel": "Francis Bean"
+              },
+              "2": {
+                "prefLabel": "Heroin"
+              }
+            }
+          }
+        };
+  
+        $scope.relatedBands = {
+          "data": {
+            "association": {
+              "0": {
+                "object": {
+                  "prefLabel": "Foo Fighters"
+                }
+              },
+              "1": {
+                "object": {
+                  "prefLabel": "Pavement"
+                }
+              },
+              "2": {
+                "object": {
+                  "prefLabel": "Hole"
+                }
+              }
+            }
+          }
+        };
+
+      });
+
+    };
       
   }])
 
@@ -117,11 +210,12 @@ angular.module('bottleRocket.controllers', [])
           $scope.lat = position.coords.latitude;
           $scope.long = position.coords.longitude;
           console.log("GEOLOCATION: " + $scope.lat + ", " + $scope.long);
-          return $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
-            .then(function(data) {
-              console.log("DIS WAN");
-              console.log(data);
-          });
+          $scope.$apply();
+          // Want to do something with the SongKick API here but can't get an API key :(
+          // return $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
+          //   .then(function(data) {
+          //     //
+          // });
       }, function() {
         alert("You need to give me permission to use your position to get Location Info.");
       });
@@ -130,11 +224,12 @@ angular.module('bottleRocket.controllers', [])
         console.log("DEFAULT GEOLOCATION")
         $scope.lat = 53.3478;
         $scope.long = 6.2597;
-        $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
-          .then(function(data) {
-            console.log("DIS WAN");
-            console.log(data);
-          });
+        $scope.$apply();
+        // Want to do something with the SongKick API here but can't get an API key :(
+        // $http.jsonp("http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=" + $scope.lat + "," + $scope.long + "&radius=50&app_id=bottleRocket&api_version=2.0&format=json&callback=JSON_CALLBACK")
+        //   .then(function(data) {
+        //     //
+        //   });
     }
 
 
@@ -147,5 +242,5 @@ angular.module('bottleRocket.controllers', [])
                 console.log(movies);
                 $scope.movies=movies;
             });
-            });
+        });
 
