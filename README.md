@@ -1,4 +1,4 @@
-﻿Deployed at http://ec2-54-72-2-150.eu-west-1.compute.amazonaws.com/
+﻿Deployed at http://ec2-54-72-2-150.eu-west-1.compute.amazonaws.com/app
 
 # Project Info
 
