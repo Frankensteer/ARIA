@@ -145,7 +145,87 @@
     font-size: 20px;
   }
 }
-              
-            
-JS
-              
+
+/* Social Icons */
+
+
+.social-icons{
+  list-style:none;
+  width:250px;
+  margin:100px auto 0 auto;
+  
+}
+ul li{
+margin-right:10px;
+}
+
+ul.social-icons li a{
+  float:left;
+  background-position:0 0;
+  background:repeat:no-repeat;
+  display:inline-block;
+  text-indent:-9999px;
+  overflow:hidden;
+  width:50px;
+  height:50px;
+  position:relative;
+  margin:0 3px;
+border-radius:50px;
+
+}
+.google{
+background-image:url('http://i.imgur.com/6y0iC8L.png?1');
+    transition:background-image 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+.twitter{
+background-image:url('http://i.imgur.com/XcI9Ego.png?1');
+    transition:background-image 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+.youtube{
+background-image:url('http://i.imgur.com/IBQanzi.png?1');
+    transition:background-image 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+.facebook{
+background-image:url('http://i.imgur.com/qqQk6GW.png?1');
+}
+
+
+.google:hover{
+background-image:url('http://i.imgur.com/qgFiraS.png?1');
+  
+    transition:all 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+.twitter:hover{
+background-image:url('http://i.imgur.com/BdgLz5W.png?1');
+    transition:background-image 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+.youtube:hover{
+background-image:url('http://i.imgur.com/ZAp30Pu.png?1');
+    transition:background-image 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+.facebook:hover{
+background-image:url('http://i.imgur.com/dzgQEBP.jpg?1');
+    transition:background-image 0.5s ease-in-out; 
+  -moz-transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.5s ease-in-out; 
+  -o-transition: 0.5s ease-in-out;
+}
+
